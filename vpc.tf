@@ -1,6 +1,6 @@
 # Theo VPC for his terraform
 resource "aws_vpc" "Theo-VPC" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.vpc_cidar
   instance_tenancy = "default"
 
   tags = {
@@ -11,7 +11,7 @@ resource "aws_vpc" "Theo-VPC" {
 # Public subnets 1 
 resource "aws_subnet" "Prod-pub-sub-1" {
   vpc_id     = aws_vpc.Theo-VPC.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.Prod-pub-sub-1
 
   tags = {
     Name = "prod-pub-sub-1"
@@ -21,7 +21,7 @@ resource "aws_subnet" "Prod-pub-sub-1" {
 # Public subnets 2 
 resource "aws_subnet" "Prod-pub-sub-2" {
   vpc_id     = aws_vpc.Theo-VPC.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.Prod-pub-sub-2 
 
   tags = {
     Name = "Prod-pub-sub-2"
@@ -31,7 +31,7 @@ resource "aws_subnet" "Prod-pub-sub-2" {
 # Private subnets-1 
 resource "aws_subnet" "Prod-pri-sub-1" {
   vpc_id     = aws_vpc.Theo-VPC.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = var.Prod-pri-sub-1
 
   tags = {
     Name = "prod-pri-sub-1"
@@ -41,7 +41,7 @@ resource "aws_subnet" "Prod-pri-sub-1" {
 # Private subnets-2
 resource "aws_subnet" "prod-pri-sub-2" {
   vpc_id     = aws_vpc.Theo-VPC.id
-  cidr_block = "10.0.4.0/24"
+  cidr_block = var.prod-pri-sub-2
 
   tags = {
     Name = "prod-pri-sub-2"
